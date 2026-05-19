@@ -49,9 +49,9 @@ type RegisterRequest struct { // ประกาศ struct RegisterRequest
 } // ปิด block การทำงานปัจจุบัน
 
 type LoginRequest struct { // ประกาศ struct LoginRequest
-	Username string `json:"username"`                                 // ประกาศ field Username พร้อม tag JSON/database
-	Email    string `json:"email"`                                    // ประกาศ field Email พร้อม tag JSON/database
-	Password string `json:"password" binding:"required,min=8,max=72"` // ประกาศ field Password พร้อม tag JSON/database
+	Username string `json:"username"`                    // ประกาศ field Username พร้อม tag JSON/database
+	Email    string `json:"email"`                       // ประกาศ field Email พร้อม tag JSON/database
+	Password string `json:"password" binding:"required"` // ประกาศ field Password สำหรับรับรหัสผ่านตอน login โดยไม่บังคับความยาวซ้ำ
 } // ปิด block การทำงานปัจจุบัน
 
 type RefreshRequest struct { // ประกาศ struct RefreshRequest
