@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222 35% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 35% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 35% 10%;
+  --primary: 262 90% 58%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 222 35% 10%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 42%;
+  --accent: 262 90% 96%;
+  --accent-foreground: 262 72% 36%;
+  --destructive: 0 72% 51%;
+  --border: 220 13% 91%;
+  --input: 220 13% 88%;
+  --input-background: 0 0% 100%;
+  --ring: 262 90% 58%;
+  --warning: 38 92% 50%;
+  --text: hsl(var(--muted-foreground));
+  --text-h: hsl(var(--foreground));
+  --bg: hsl(var(--background));
+  --border-color: hsl(var(--border));
+  --code-bg: #f4f3ec;
+  --accent-bg: hsl(var(--accent));
+  --accent-border: hsl(var(--primary) / 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+.dark {
+  --background: 225 17% 9%;
+  --foreground: 220 18% 96%;
+  --card: 224 15% 13%;
+  --card-foreground: 220 18% 96%;
+  --popover: 224 15% 13%;
+  --popover-foreground: 220 18% 96%;
+  --primary: 262 90% 68%;
+  --primary-foreground: 222 35% 10%;
+  --secondary: 224 13% 18%;
+  --secondary-foreground: 220 18% 96%;
+  --muted: 224 13% 18%;
+  --muted-foreground: 220 9% 68%;
+  --accent: 224 13% 21%;
+  --accent-foreground: 220 18% 96%;
+  --destructive: 0 63% 52%;
+  --border: 224 13% 23%;
+  --input: 224 13% 25%;
+  --input-background: 224 15% 13%;
+  --ring: 262 90% 68%;
+  --warning: 38 92% 55%;
+  --text: hsl(var(--muted-foreground));
+  --text-h: hsl(var(--foreground));
+  --bg: hsl(var(--background));
+  --border-color: hsl(var(--border));
+  --code-bg: #1f2028;
+  --accent-bg: hsl(var(--accent));
+  --accent-border: hsl(var(--primary) / 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  color-scheme: dark;
+}
+
+.dark #social .button-icon {
+  filter: invert(1) brightness(2);
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border-color);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
