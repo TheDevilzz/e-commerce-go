@@ -1,4 +1,4 @@
-package repository // ประกาศ package repository
+﻿package repository // ประกาศ package repository
 
 import ( // เริ่มส่วน import package ที่ไฟล์นี้ต้องใช้
 	"backend-go/internal/model" // นำเข้า package backend-go/internal/model
@@ -92,5 +92,27 @@ func (r *productRepository) UpdateCategory(category model.Category) (model.Categ
 } // ปิด block การทำงานปัจจุบัน
 
 func (r *productRepository) DeleteCategory(id uint) error { // ประกาศฟังก์ชัน DeleteCategory
-	return r.db.Delete(&model.Category{}, id).Error // คืนค่า r.db.Delete(&model.Category{}, id).Error
+	return r.db.Transaction(func(tx *gorm.DB) error {
+		productIDs := tx.Model(&model.Product{}).
+			Select("id").
+			Where("category_id = ?", id)
+
+		if err := tx.Where("product_id IN (?)", productIDs).
+			Delete(&model.WishlistItem{}).Error; err != nil {
+			return err
+		}
+
+		if err := tx.Where("product_id IN (?)", productIDs).
+			Delete(&model.CartItem{}).Error; err != nil {
+			return err
+		}
+
+		if err := tx.Unscoped().
+			Where("category_id = ?", id).
+			Delete(&model.Product{}).Error; err != nil {
+			return err
+		}
+
+		return tx.Delete(&model.Category{}, id).Error
+	})
 } // ปิด block การทำงานปัจจุบัน
